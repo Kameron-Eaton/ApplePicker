@@ -1,13 +1,30 @@
+/****
+ * Created by: Kameron Eaton
+ * Date Created: Feb 2, 2022
+ * 
+ * Last Edited by: NA
+ * Last Edited: Feb 7, 2022
+ * 
+ * Description: Manages the creation of baskets and what happens when they collide with apples.
+ ****/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;//using UI Libraries
 
 public class Basket : MonoBehaviour
 {
+    [Header("Set Dynamically")]
+    public Text scoreGT;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject scoreGO = GameObject.Find("ScoreCounter");//score game object
+        scoreGT = scoreGO.GetComponent<Text>();//text component of the score game object
+        scoreGT.text = "0";//set the text property
     }
 
     // Update is called once per frame
@@ -30,6 +47,10 @@ public class Basket : MonoBehaviour
         if(collidedWith.tag == "Apple")
         {
             Destroy(collidedWith);
+
+            int score = int.Parse(scoreGT.text);
+            score += 100;
+            scoreGT.text = score.ToString();
         }
     }
 }

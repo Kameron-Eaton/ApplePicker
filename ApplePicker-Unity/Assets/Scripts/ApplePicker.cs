@@ -3,7 +3,7 @@
  * Date Created: Jan 31, 2022
  * 
  * Last Edited by: NA
- * Last Edited: Jan 31, 2022
+ * Last Edited: Feb 7, 2022
  * 
  * Description: Game manager script
  ****/
@@ -27,12 +27,21 @@ public class ApplePicker : MonoBehaviour
             Vector3 pos = Vector3.zero;
             pos.y = basketBottomY + (basketSpacingY * i);
             tBasketGO.transform.position = pos;
-        }
-    }
+        }//end for
+    }//end Start
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-}
+    }//end Update
+
+    public void AppleDestroyed()
+    {
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+        foreach(GameObject tGo in tAppleArray)
+        {
+            Destroy(tGo); //clear screen of all apples for a short moment
+        }//end foreach
+    }//end AppleDestroyed
+}//end ApplePicker

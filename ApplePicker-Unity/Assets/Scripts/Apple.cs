@@ -3,9 +3,9 @@
  * Date Created: Jan 31, 2022
  * 
  * Last Edited by: NA
- * Last Edited: Jan 31, 2022
+ * Last Edited: Feb 7, 2022
  * 
- * Description: Handles the destruction of the apples
+ * Description: Handles the destruction of the apples that miss the basket
  ****/
 
 
@@ -28,7 +28,9 @@ public class Apple : MonoBehaviour
     {
         if(transform.position.y < bottomY)
         {
-            Destroy(this.gameObject);
-        }
-    }
-}
+            Destroy(this.gameObject); //destroy game object
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>(); //get ApplePicker script from main camera
+            apScript.AppleDestroyed(); //call AppleDestroyed in the ApplePicker function
+        }//end if
+    }//end Update
+}//end Apple
