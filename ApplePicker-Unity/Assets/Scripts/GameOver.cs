@@ -6,7 +6,7 @@
 *Last Edited: Feb 7, 2022
 *
 *Description: Manages the end of the game and the game over screen
-/****
+****/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
