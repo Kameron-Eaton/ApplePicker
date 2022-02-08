@@ -25,7 +25,7 @@ public class Basket : MonoBehaviour
         GameObject scoreGO = GameObject.Find("ScoreCounter");//score game object
         scoreGT = scoreGO.GetComponent<Text>();//text component of the score game object
         scoreGT.text = "0";//set the text property
-    }
+    }//end Start
 
     // Update is called once per frame
     void Update()
@@ -38,7 +38,7 @@ public class Basket : MonoBehaviour
         Vector3 pos = this.transform.position;
         pos.x = mousePos3D.x;
         this.transform.position = pos; //Move the x position of the basket to x position of the mouse
-    }
+    }//end Update
 
     private void OnCollisionEnter(Collision coll)
     {
@@ -46,11 +46,15 @@ public class Basket : MonoBehaviour
         GameObject collidedWith = coll.gameObject;
         if(collidedWith.tag == "Apple")
         {
-            Destroy(collidedWith);
 
-            int score = int.Parse(scoreGT.text);
-            score += 100;
-            scoreGT.text = score.ToString();
-        }
-    }
-}
+            Destroy(collidedWith); //destory apple on collision
+
+            int score = int.Parse(scoreGT.text); //store score as an int
+            score += 100; // increase score
+            scoreGT.text = score.ToString(); // display score as string
+
+            if (score > HighScore.score)
+                HighScore.score = score; //increase high score if passed
+        }//end if
+    }//end OnCollisionEnter
+}//end Basket
